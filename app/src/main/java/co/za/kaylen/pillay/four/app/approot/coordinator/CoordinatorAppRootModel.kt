@@ -4,4 +4,6 @@ sealed class CoordinatorAppRootModel {
 
     data class OnBoarding(val title: String) : CoordinatorAppRootModel()
 
+    object OnBoardingComplete : CoordinatorAppRootModel()
+
 }

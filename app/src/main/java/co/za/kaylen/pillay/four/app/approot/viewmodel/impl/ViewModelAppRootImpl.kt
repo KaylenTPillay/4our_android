@@ -1,5 +1,6 @@
 package co.za.kaylen.pillay.four.app.approot.viewmodel.impl
 
+import android.content.Context
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
@@ -13,13 +14,18 @@ internal class ViewModelAppRootImpl(
 
     override fun onAttachCoordinator(
         containerId: Int,
+        context: Context,
         manager: FragmentManager,
         lifecycleOwner: LifecycleOwner
     ) {
-        coordinator.attach(containerId, manager, lifecycleOwner)
+        coordinator.attach(containerId, context, manager, lifecycleOwner)
     }
 
     override fun init() {
         coordinator.navigate(model = CoordinatorAppRootModel.OnBoarding("OnBoarding"))
+    }
+
+    override fun onBoardingComplete() {
+        coordinator.navigate(model = CoordinatorAppRootModel.OnBoardingComplete)
     }
 }
